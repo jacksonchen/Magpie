@@ -1,41 +1,32 @@
 
 /**
  * Write a description of class FollowUp here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
+
+import java.util.*;
 public class FollowUp
 {
-    private String line = "aabcca";
-    private static int findString(String str, int start)
+    private static String line = "aaeaeaae";
+    
+    
+    public static int findString (String str, int start)
     {
-        int psn = line.indexOf(str, start);
-        String before = "";
-        String after = "";
-        while (psn >= 0)
+        String myString = line.toLowerCase(); // the larger string
+        str = str.toLowerCase(); // the character you're searching for
+        int psn = myString.indexOf(str, start);
+        while (psn < myString.length() && psn >= 0)
         {
-            if (psn == 0)
-            {
-                after = str.substring(1, 2);
-            }
-            else if (psn == str.length() - 1)
-            {
-                before = str.substring(str.length() - 2, str.length() - 1);
-            }
-            else if (psn > 0)
-            {
-                before = str.substring(psn - 1, psn);
-                after = str.substring(psn + 1, psn + 2);
-            }
-            
-            if (before != str || after != str)
-            {
-                return psn;
-            }
-            else 
+            System.out.println(str);
+            if (myString.substring(psn-1,psn).equals(str) || myString.substring(psn+1,psn+2).equals(str))
             {
                 return -1;
+            }
+            else
+            {
+                return psn;
             }
         }
         return -1;
@@ -43,6 +34,7 @@ public class FollowUp
     
     public static void main (String[] args)
     {
-        System.out.println(findString("a", 2));
+        System.out.println(findString("l",0));
+        
     }
 }
